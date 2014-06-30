@@ -1,0 +1,30 @@
+{
+  "name": "obsidian",
+  "version": "0.1.0",
+  "devDependencies": {
+    "mysql": "~2.0.0-alpha9",
+    "orm": "~2.1.3"
+  },
+  "readmeFilename": "README.md",
+  "gitHead": "38a5671e490730a2805b58ee7641449d124ddec6",
+  "description": "obsidian",
+  "main": "router.js",
+  "dependencies": {
+    "express": "~3.4.4",
+    "mysql": "~2.0.0-alpha9",
+    "orm": "~2.1.3",
+    "sequelize": "~1.7.0-rc6",
+    "jade": "~1.3.0",
+    "coffee-script": "~1.7.1",
+    "markdown": "~0.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nickalto/obsidian.git"
+  },
+  "author": "Nick Alto",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/nickalto/obsidian/issues"
+  }
+}

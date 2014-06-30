@@ -1,0 +1,31 @@
+@import 'global';
+
+//Media queries and breakpoints go here
+$iphone-width: 569px;
+$ipad-width: 767px;
+$desktop-width: 1152px;
+$widescreen-width: 1536px;
+
+
+@media screen and (max-width: $desktop-width) {
+
+}
+
+@media screen and (min-width: 900px) {
+
+	body {
+	}
+}
+
+@media screen and (max-width: $ipad-width) {
+
+	body {
+
+	}
+}
+
+@media screen and (max-width: $iphone-width) {
+	body {
+
+	}
+}
