@@ -14,18 +14,39 @@ $widescreen-width: 1536px;
 @media screen and (min-width: 900px) {
 
 	body {
+
 	}
 }
 
 @media screen and (max-width: $ipad-width) {
 
 	body {
+		$header-height: 600px;
+		$grid-max-width: 600px;
+		$grid-margin: 3em;
+		$icon-font-size:2em;
+		$panel-width: 50%;
+		$panel-padding: 2em;
+		$panel-padding-bottom: 2em;
+
+		@include updateCircle;
+		@include updateGrid;
+		@include updateSocialIcons;
+		@include updatePanels;
 
 	}
 }
 
 @media screen and (max-width: $iphone-width) {
 	body {
+		$header-height: 500px;
+		$circle-width: 200px;
+		$ring-width: 250px;
+		$panel-width: 100%;
+		$panel-padding: 2em;
+
+		@include updateCircle;
+		@include updatePanels;
 
 	}
 }

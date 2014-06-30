@@ -3,6 +3,7 @@
 @import "_bourbon/bourbon";
 @import "_fontello/css/fontello.css";
 
+// generic base styles
 body {
 	margin: 0;
 	background: white;
@@ -11,18 +12,100 @@ body {
 		display:none;
 	}
 }
+
 a, div {
 	-webkit-tap-highlight-color: transparent;
 }
+
 p, a, h1, h2, h3, span, div {
 	-webkit-font-smoothing: antialiased;
 	color: $o-black;
 	text-decoration: none;
 }
 
+p {
+	line-height: 2em;
+}
+
+
+//mixins
+$circle-width: 250px;
+$ring-width: 300px;
+$ring-border-width: 6px;
+
+@mixin ring {
+	position: absolute;
+	border: solid $ring-border-width $o-black;
+	width: $ring-width;
+	height: $ring-width;
+	border-radius: 50%;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+}
+
+@mixin ringCalc {
+	top: (($ring-header-height / 2) -  ($ring-width / 2) - $ring-border-width);
+}
+
+@mixin circleCalc {
+	top:(($ring-header-height / 2) - ($circle-width / 2));
+}
+
+$grid-max-width: 1000px;
+$grid-margin: 6em;
+@mixin updateGrid {
+	#three-panel, #about, #contact-icons{
+		margin: $grid-margin auto;
+		max-width: $grid-max-width;
+	}
+}
+
+@mixin updateSocialIcons {
+	i{
+		font-size: $icon-font-size;
+	}
+}
+
+$panel-padding-bottom: 0em;
+@mixin updatePanels {
+	.panel {
+		padding-bottom: $panel-padding-bottom;
+		width: $panel-width;
+		div {
+			padding: 0 $panel-padding;
+		}
+	}
+}
+
+@mixin updateCircle {
+	$ring-header-height: $header-height - 100;
+
+	#header{
+		height: $header-height;
+	}
+
+	.ring {
+		width: $ring-width;
+		height: $ring-width;
+		@include ringCalc;
+	}
+
+	.circle {
+		width: $circle-width;
+		height: $circle-width;
+		@include circleCalc;
+		p {
+			line-height: $circle-width;
+		}
+	}
+}
+
+
+// Custom styles
+$header-height: 700px;
 #header {
 	position: relative;
-	height: 700px;
 	background: $header-color;
 	i {
 		position: absolute;
@@ -34,46 +117,27 @@ p, a, h1, h2, h3, span, div {
 	}
 }
 
-p {
-	line-height: 2em;
-}
-
-$circle-width: 250px;
-$ring-width: 300px;
-@mixin ring {
-	position: absolute;
-	border: solid 6px $o-black;
-	width: $ring-width;
-	height: $ring-width;
-	border-radius: 50%;
-	margin: 0 auto;
-	left: 0;
-	right: 0;
-}
-
+$ring-header-height: $header-height - 100;
 .ring {
 	@include ring;
-	top: 144px;
 }
 
 .circle {
 	@include ring;
-	width: $circle-width;
-	height: $circle-width;
 	background: $o-black;
-	top:175px;
 	border: none;
 	p {
 		text-align: center;
 		margin: 0;
-		line-height: $circle-width;
 		color: $header-color;
 		letter-spacing: 0.2em;
 		font-size: 2em;
 	}
 }
+@include updateCircle;
 
 $img-width:150px;
+
 .image-circle {
 	@include ring;
 	position:relative;
@@ -91,10 +155,7 @@ $img-width:150px;
 	background: white;
 }
 
-#three-panel, #about, #contact-icons{
-	margin: 6em auto;
-	max-width: 1100px;
-}
+@include updateGrid;
 
 #me {
 		padding: 0 2em;
@@ -127,20 +188,21 @@ $img-width:150px;
 	}
 }
 
+$icon-font-size: 3em;
+@include updateSocialIcons;
 i {
 	color: $header-color;
 	opacity: 0.5;
-	font-size: 3em;
 	line-height:100px;
 }
 
+$panel-width: 33.33%;
+$panel-padding: 3em;
+@include updatePanels;
+
 .panel {
-	width: 33.33%;
 	display:inline-block;
 	float:left;
-	div {
-		padding: 0 3em;
-	}
 }
 
 #contact {
